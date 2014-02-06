@@ -20,7 +20,7 @@ from django.core.management.color import no_style
 from django.core.management.commands.loaddata import Command
 from django.db import connections, transaction, DEFAULT_DB_ALIAS, models
 from django.db.backends.creation import BaseDatabaseCreation
-from django.test.simple import DjangoTestSuiteRunner
+from django.test.runner import DiscoverRunner
 from django.utils.importlib import import_module
 
 import nose.core
@@ -121,7 +121,7 @@ def _get_options():
                                        o.action != 'help')
 
 
-class BasicNoseRunner(DjangoTestSuiteRunner):
+class BasicNoseRunner(DiscoverRunner):
     """Facade that implements a nose runner in the guise of a Django runner
 
     You shouldn't have to use this directly unless the additions made by
